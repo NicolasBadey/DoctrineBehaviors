@@ -8,11 +8,11 @@ before_script:
   - php composer.phar install
 
 before_script:
-    - createdb orm_behavior_test
-    - "echo 'create extension cube;' | psql"
-    - "echo 'create extension earthdistance;' | psql"
+    - createdb orm_behaviors_test
+    - "echo 'create extension cube;' | psql orm_behaviors_test"
+    - "echo 'create extension earthdistance;' | psql orm_behaviors_test"
 
 script: phpunit
 
 after_script:
-    - dropdb orm_behavior_test
+    - dropdb orm_behaviors_test
