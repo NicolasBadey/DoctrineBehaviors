@@ -7,5 +7,12 @@ before_script:
   - wget -nc http://getcomposer.org/composer.phar
   - php composer.phar install
 
+before_script:
+    - createdb orm_behavior_test
+    - "echo 'create extension cube;' | psql"
+    - "echo 'create extension earthdistance;' | psql"
+
 script: phpunit
 
+after_script:
+    - dropdb orm_behavior_test
