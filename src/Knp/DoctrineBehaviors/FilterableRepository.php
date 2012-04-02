@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Knp\DoctrineBehaviors\Filterable;
+namespace Knp\DoctrineBehaviors;
 
 /**
  * Filterable list trait.

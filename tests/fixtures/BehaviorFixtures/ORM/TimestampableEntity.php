@@ -10,7 +10,7 @@ use Knp\DoctrineBehaviors as ModelBehaviors;
  */
 class TimestampableEntity
 {
-    use ModelBehaviors\Timestampable\Timestampable;
+    use ModelBehaviors\Timestampable;
 
     /**
      * @ORM\Id

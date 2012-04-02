@@ -13,7 +13,7 @@ class SoftDeletableTest extends \PHPUnit_Framework_TestCase
     protected function getUsedEntityFixtures()
     {
         return array(
-            'BehaviorFixtures\\ORM\\DeletableEntity'
+            'BehaviorFixtures\\ORM\\SoftDeletableEntity'
         );
     }
 
@@ -30,7 +30,7 @@ class SoftDeletableTest extends \PHPUnit_Framework_TestCase
     {
         $em = $this->getEntityManager();
 
-        $entity = new \BehaviorFixtures\ORM\DeletableEntity();
+        $entity = new \BehaviorFixtures\ORM\SoftDeletableEntity();
 
         $em->persist($entity);
         $em->flush();
@@ -41,7 +41,7 @@ class SoftDeletableTest extends \PHPUnit_Framework_TestCase
         $em->flush();
         $em->clear();
 
-        $entity = $em->getRepository('BehaviorFixtures\ORM\DeletableEntity')->find($id);
+        $entity = $em->getRepository('BehaviorFixtures\ORM\SoftDeletableEntity')->find($id);
 
         $this->assertNotNull($entity);
         $this->assertTrue($entity->isDeleted());

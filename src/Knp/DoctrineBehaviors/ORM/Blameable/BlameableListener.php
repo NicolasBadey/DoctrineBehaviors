@@ -195,7 +195,7 @@ class BlameableListener implements EventSubscriber
      */
     private function isEntitySupported(\ReflectionClass $reflClass)
     {
-        $isSupported = in_array('Knp\DoctrineBehaviors\Blameable\Blameable', $reflClass->getTraitNames());
+        $isSupported = in_array('Knp\DoctrineBehaviors\Blameable', $reflClass->getTraitNames());
 
         /*while(!$isSupported and $reflClass->getParentClass()) {
             $reflClass = $reflClass->getParentClass();

@@ -10,7 +10,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class FilterableRepository extends EntityRepository
 {
-    use ModelBehaviors\Filterable\FilterableRepository;
+    use ModelBehaviors\FilterableRepository;
 
     public function getLikeFilterColumns()
     {

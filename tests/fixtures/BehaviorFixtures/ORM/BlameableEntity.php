@@ -10,7 +10,7 @@ use Knp\DoctrineBehaviors as ModelBehaviors;
  */
 class BlameableEntity
 {
-    use ModelBehaviors\Blameable\Blameable;
+    use ModelBehaviors\Blameable;
 
     /**
      * @ORM\Id

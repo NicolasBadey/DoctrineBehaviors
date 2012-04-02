@@ -8,9 +8,9 @@ use Knp\DoctrineBehaviors as ModelBehaviors;
 /**
  * @ORM\Entity
  */
-class DeletableEntity
+class SoftDeletableEntity
 {
-    use ModelBehaviors\SoftDeletable\SoftDeletable;
+    use ModelBehaviors\SoftDeletable;
 
     /**
      * @ORM\Id
