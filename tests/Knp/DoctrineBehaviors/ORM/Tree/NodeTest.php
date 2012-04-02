@@ -2,7 +2,7 @@
 
 namespace Tests\Knp\DoctrineBehaviors\ORM\Tree;
 
-use Knp\DoctrineBehaviors\ORM\Tree\NodeInterface;
+use Knp\DoctrineBehaviors\Tree\NodeInterface;
 use Tests\Knp\DoctrineBehaviors\ORM\EntityManagerProvider;
 use BehaviorFixtures\ORM\TreeNodeEntity;
 

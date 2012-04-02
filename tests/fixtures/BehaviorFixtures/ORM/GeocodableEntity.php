@@ -3,7 +3,7 @@
 namespace BehaviorFixtures\ORM;
 
 use Doctrine\ORM\Mapping as ORM;
-use Knp\DoctrineBehaviors\ORM as OrmBehaviors;
+use Knp\DoctrineBehaviors as ModelBehaviors;
 use Knp\DoctrineBehaviors\ORM\Geocodable\Type\Point;
 
 /**
@@ -11,7 +11,7 @@ use Knp\DoctrineBehaviors\ORM\Geocodable\Type\Point;
  */
 class GeocodableEntity
 {
-    use OrmBehaviors\Geocodable\Geocodable;
+    use ModelBehaviors\Geocodable\Geocodable;
 
     /**
      * @ORM\Id

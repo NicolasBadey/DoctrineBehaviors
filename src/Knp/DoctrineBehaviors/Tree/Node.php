@@ -1,8 +1,6 @@
 <?php
 
-namespace Knp\DoctrineBehaviors\ORM\Tree;
-
-use Knp\DoctrineBehaviors\ORM\Tree\NodeInterface;
+namespace Knp\DoctrineBehaviors\Tree;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;

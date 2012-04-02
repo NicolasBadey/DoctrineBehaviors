@@ -12,8 +12,9 @@
 namespace Knp\DoctrineBehaviors\ORM\SoftDeletable;
 
 use Doctrine\Common\Persistence\Mapping\ClassMetadata,
-    Doctrine\Common\EventSubscriber,
-    Doctrine\ORM\Event\OnFlushEventArgs,
+    Doctrine\Common\EventSubscriber;
+
+use Doctrine\ORM\Event\OnFlushEventArgs,
     Doctrine\ORM\Events;
 
 /**
@@ -61,7 +62,7 @@ class SoftDeletableListener implements EventSubscriber
     {
         $traitNames = $classMetadata->reflClass->getTraitNames();
 
-        return in_array('Knp\DoctrineBehaviors\ORM\SoftDeletable\SoftDeletable', $traitNames);
+        return in_array('Knp\DoctrineBehaviors\SoftDeletable\SoftDeletable', $traitNames);
     }
 
     /**

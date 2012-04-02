@@ -2,7 +2,7 @@
 
 namespace BehaviorFixtures\ORM;
 
-use Knp\DoctrineBehaviors\ORM\Filterable;
+use Knp\DoctrineBehaviors as ModelBehaviors;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -10,7 +10,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class FilterableRepository extends EntityRepository
 {
-    use Filterable\FilterableRepository;
+    use ModelBehaviors\Filterable\FilterableRepository;
 
     public function getLikeFilterColumns()
     {
@@ -22,4 +22,3 @@ class FilterableRepository extends EntityRepository
         return ['e:code'];
     }
 }
-

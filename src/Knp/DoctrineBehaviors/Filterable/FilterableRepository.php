@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Knp\DoctrineBehaviors\ORM\Filterable;
+namespace Knp\DoctrineBehaviors\Filterable;
 
 /**
- * Filterable trait.
+ * Filterable list trait.
  *
  * Should be used inside entity repository, that needs to be filterable
  */

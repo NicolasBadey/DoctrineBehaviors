@@ -11,9 +11,10 @@
 
 namespace Knp\DoctrineBehaviors\ORM\Timestampable;
 
-use Doctrine\ORM\Event\LoadClassMetadataEventArgs,
-    Doctrine\Common\EventSubscriber,
-    Doctrine\ORM\Events,
+use Doctrine\Common\EventSubscriber;
+
+use Doctrine\ORM\Events,
+    Doctrine\ORM\Event\LoadClassMetadataEventArgs,
     Doctrine\ORM\Mapping\ClassMetadata;
 
 /**
@@ -51,6 +52,6 @@ class TimestampableListener implements EventSubscriber
     {
         $traitNames = $classMetadata->reflClass->getTraitNames();
 
-        return in_array('Knp\DoctrineBehaviors\ORM\Timestampable\Timestampable', $traitNames);
+        return in_array('Knp\DoctrineBehaviors\Timestampable\Timestampable', $traitNames);
     }
 }

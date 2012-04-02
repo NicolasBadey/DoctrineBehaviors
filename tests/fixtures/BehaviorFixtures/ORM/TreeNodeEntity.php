@@ -5,17 +5,15 @@ namespace BehaviorFixtures\ORM;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Knp\DoctrineBehaviors\ORM\Tree;
+use Knp\DoctrineBehaviors as ModelBehaviors;
 
 
 /**
  * @ORM\Entity(repositoryClass="BehaviorFixtures\ORM\TreeNodeEntityRepository")
  */
-class TreeNodeEntity implements Tree\NodeInterface, \ArrayAccess
+class TreeNodeEntity implements ModelBehaviors\Tree\NodeInterface, \ArrayAccess
 {
-    const PATH_SEPARATOR = '/';
-
-    use Tree\Node;
+    use ModelBehaviors\Tree\Node;
 
     /**
      * @ORM\Id

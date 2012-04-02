@@ -2,7 +2,7 @@
 
 namespace BehaviorFixtures\ORM;
 
-use Knp\DoctrineBehaviors\ORM\Tree;
+use Knp\DoctrineBehaviors as ModelBehaviors;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -10,6 +10,5 @@ use Doctrine\ORM\EntityRepository;
  */
 class TreeNodeEntityRepository extends EntityRepository
 {
-    use Tree\Tree;
+    use ModelBehaviors\Tree\Tree;
 }
-

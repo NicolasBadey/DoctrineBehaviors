@@ -1,6 +1,6 @@
 <?php
 
-namespace Knp\DoctrineBehaviors\ORM\Tree;
+namespace Knp\DoctrineBehaviors\Tree;
 
 use Doctrine\ORM\QueryBuilder;
 

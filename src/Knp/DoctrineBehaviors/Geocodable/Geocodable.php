@@ -9,11 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Knp\DoctrineBehaviors\ORM\Geocodable;
+namespace Knp\DoctrineBehaviors\Geocodable;
 
-/**Geocodable
- *  trait.
- *
+/**
+ * Geocodable trait.
  * Should be used inside entity where you need to manipulate geographical information
  */
 trait Geocodable

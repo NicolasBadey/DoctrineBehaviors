@@ -1,6 +1,6 @@
 <?php
 
-namespace Knp\DoctrineBehaviors\ORM\Geocodable;
+namespace Knp\DoctrineBehaviors\Geocodable;
 
 use Knp\DoctrineBehaviors\ORM\Geocodable\Type\Point;
 use Doctrine\ORM\QueryBuilder;
@@ -24,4 +24,3 @@ trait GeocodableRepository
         ;
     }
 }
-

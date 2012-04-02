@@ -2,7 +2,7 @@
 
 namespace BehaviorFixtures\ORM;
 
-use Knp\DoctrineBehaviors\ORM\Geocodable;
+use Knp\DoctrineBehaviors as ModelBehaviors;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -10,6 +10,6 @@ use Doctrine\ORM\EntityRepository;
  */
 class GeocodableEntityRepository extends EntityRepository
 {
-    use Geocodable\GeocodableRepository;
+    use ModelBehaviors\Geocodable\GeocodableRepository;
 }
 

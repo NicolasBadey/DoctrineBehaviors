@@ -3,14 +3,14 @@
 namespace BehaviorFixtures\ORM;
 
 use Doctrine\ORM\Mapping as ORM;
-use Knp\DoctrineBehaviors\ORM as OrmBehaviors;
+use Knp\DoctrineBehaviors as ModelBehaviors;
 
 /**
  * @ORM\Entity
  */
 class TimestampableEntity
 {
-    use OrmBehaviors\Timestampable\Timestampable;
+    use ModelBehaviors\Timestampable\Timestampable;
 
     /**
      * @ORM\Id

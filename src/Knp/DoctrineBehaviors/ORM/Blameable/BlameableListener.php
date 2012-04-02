@@ -13,11 +13,11 @@ namespace Knp\DoctrineBehaviors\ORM\Blameable;
 
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
-use Doctrine\Common\Persistence\Mapping\ClassMetadata;
-use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
-use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\Common\Persistence\Mapping\ClassMetadata,
+    Doctrine\Common\EventSubscriber;
 
-use Doctrine\Common\EventSubscriber,
+use Doctrine\ORM\Event\LoadClassMetadataEventArgs,
+    Doctrine\ORM\Event\LifecycleEventArgs,
     Doctrine\ORM\Event\OnFlushEventArgs,
     Doctrine\ORM\Events;
 
@@ -195,7 +195,7 @@ class BlameableListener implements EventSubscriber
      */
     private function isEntitySupported(\ReflectionClass $reflClass)
     {
-        $isSupported = in_array('Knp\DoctrineBehaviors\ORM\Blameable\Blameable', $reflClass->getTraitNames());
+        $isSupported = in_array('Knp\DoctrineBehaviors\Blameable\Blameable', $reflClass->getTraitNames());
 
         /*while(!$isSupported and $reflClass->getParentClass()) {
             $reflClass = $reflClass->getParentClass();

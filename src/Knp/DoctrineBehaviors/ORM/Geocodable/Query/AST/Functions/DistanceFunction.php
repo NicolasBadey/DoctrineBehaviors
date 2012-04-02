@@ -2,10 +2,10 @@
 
 namespace Knp\DoctrineBehaviors\ORM\Geocodable\Query\AST\Functions;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode;
-use Doctrine\ORM\Query\Lexer;
-use Doctrine\ORM\Query\SqlWalker;
-use Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode,
+    Doctrine\ORM\Query\Lexer,
+    Doctrine\ORM\Query\SqlWalker,
+    Doctrine\ORM\Query\Parser;
 
 /**
  * DQL function for calculating distances between two points

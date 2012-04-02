@@ -13,13 +13,14 @@ namespace Knp\DoctrineBehaviors\ORM\Geocodable;
 
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
-use Doctrine\Common\Persistence\Mapping\ClassMetadata;
-use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
-use Doctrine\ORM\Event\LifecycleEventArgs;
-use Doctrine\DBAL\Platforms\PostgreSqlPlatform;
-use Doctrine\DBAL\Types\Type;
-
 use Doctrine\Common\EventSubscriber,
+    Doctrine\Common\Persistence\Mapping\ClassMetadata;
+
+use Doctrine\DBAL\Platforms\PostgreSqlPlatform,
+    Doctrine\DBAL\Types\Type;
+
+use Doctrine\ORM\Event\LoadClassMetadataEventArgs,
+    Doctrine\ORM\Event\LifecycleEventArgs,
     Doctrine\ORM\Event\OnFlushEventArgs,
     Doctrine\ORM\Events;
 
@@ -131,7 +132,7 @@ class GeocodableListener implements EventSubscriber
      */
     private function isEntitySupported(\ReflectionClass $reflClass)
     {
-        return in_array('Knp\DoctrineBehaviors\ORM\Geocodable\Geocodable', $reflClass->getTraitNames());
+        return in_array('Knp\DoctrineBehaviors\Geocodable\Geocodable', $reflClass->getTraitNames());
     }
 
     public function getSubscribedEvents()
