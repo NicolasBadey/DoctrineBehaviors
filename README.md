@@ -24,7 +24,6 @@ Make sure to activate them by reading the [Listeners](#listeners) section.
 Traits are based on annotation driver.  
 You need to declare `use Doctrine\ORM\Mapping as ORM;` on top of your entity.
 
-
 ## Usage
 
 All you have to do is to define a Doctrine2 entity and use traits:
@@ -35,19 +34,20 @@ All you have to do is to define a Doctrine2 entity and use traits:
 
 use Doctrine\ORM\Mapping as ORM;
 
-use Knp\DoctrineBehaviors\ORM as ORMBehaviors;
+use Knp\DoctrineBehaviors;
 
 /**
  * @ORM\Entity(repositoryClass="CategoryRepository")
  */
 class Category implements ORMBehaviors\Tree\NodeInterface, \ArrayAccess
 {
-    use ORMBehaviors\Tree\Node,
-        ORMBehaviors\Translatable\Translatable,
-        ORMBehaviors\Timestampable\Timestampable,
-        ORMBehaviors\SoftDeletable\SoftDeletable,
-        ORMBehaviors\Blameable\Blameable,
-        ORMBehaviors\Geocodable\Geocodable
+    use
+        DoctrineBehaviors\Timestampable
+      , DoctrineBehaviors\SoftDeletable
+      , DoctrineBehaviors\Translatable
+      , DoctrineBehaviors\Blameable
+      , DoctrineBehaviors\Tree\Node
+      , DoctrineBehaviors\Geocodable\Geocodable
     ;
 
     /**
@@ -68,11 +68,13 @@ For some behaviors like tree, you can use repository traits:
 <?php
 
 use Doctrine\ORM\EntityRepository;
-use Knp\DoctrineBehaviors\ORM as ORMBehaviors;
+use Knp\DoctrineBehaviors;
 
 class CategoryRepository extends EntityRepository
 {
-    use ORMBehaviors\Tree\Tree,
+    use
+        DoctrineBehaviors\Tree\Tree
+    ;
 }
 
 ```
@@ -116,7 +118,6 @@ Translatable behavior waits for a Category**Translation** entity.
 This naming convention avoids you to handle manually entity associations. It is handled automatically by the TranslationListener.
 
 In order to use Translatable trait, you will have to create this entity.
-
 
 ``` php
 
@@ -195,6 +196,7 @@ Now you can work on translations using `translate` or `getTranslations` methods.
 
     // but i'm "deleted"
     $category->isDeleted(); // === true
+
 ```
 
 <a name="blameable" id="blameable"></a>
@@ -209,10 +211,14 @@ to manage automatically the association between this user entity and your entite
 Using symfony2, all you have to do is to configure the DI parameter named `%knp.doctrine_behaviors.blameable_listener.user_entity%` with a fully qualified namespace,
 for example:
 
-    # app/config/config.yml
+``` yml
 
-    parameters:
-        knp.doctrine_behaviors.blameable_listener.user_entity: AppBundle\Entity\User
+# app/config/config.yml
+
+parameters:
+    knp.doctrine_behaviors.blameable_listener.user_entity: AppBundle\Entity\User
+
+```
 
 Then, you can use it like that:
 
@@ -274,7 +280,9 @@ It allows to simple filter our result
 Joined filters example:
 
 ```php
+
 <?php
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -282,7 +290,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ProductEntity
 {
-
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -305,19 +312,21 @@ class ProductEntity
      */
     protected $orders;
 }
+
 ```
 
 and repository:
 
 ```php
+
 <?php
 
-use Knp\DoctrineBehaviors\ORM\Filterable;
+use Knp\DoctrineBehaviors;
 use Doctrine\ORM\EntityRepository;
 
 class ProductRepository extends EntityRepository
 {
-    use Filterable\FilterableRepository;
+    use DoctrineBehaviors\FilterableRepository;
 
     public function getLikeFilterColumns()
     {
@@ -336,12 +345,17 @@ class ProductRepository extends EntityRepository
             ->leftJoin('e.orders', 'o');
     }
 }
+
 ```
 
 Now we can filtering using:
 
 ```php
+
+<?php
+
     $products = $em->getRepository('Product')->filterBy(['o:code' => '21']);
+
 ```
 
 <a name="listeners" id="listeners"></a>
@@ -351,9 +365,9 @@ If you use symfony2, you can easilly register them by importing a service defini
 
 ``` yaml
 
-    # app/config/config.yml
-    imports:
-        - { resource: ../../vendor/knp-doctrine-behaviors/config/orm-services.yml }
+# app/config/config.yml
+imports:
+    - { resource: ../../vendor/knp-doctrine-behaviors/config/orm-services.yml }
 
 ```
 
