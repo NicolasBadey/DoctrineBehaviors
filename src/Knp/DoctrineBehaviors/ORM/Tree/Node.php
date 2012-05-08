@@ -5,6 +5,7 @@ namespace Knp\DoctrineBehaviors\ORM\Tree;
 use Knp\DoctrineBehaviors\ORM\Tree\NodeInterface;
 
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Internal\Hydration\IterableResult;
 
 /*
  * @author     Florian Klein <florian.klein@free.fr>
@@ -14,17 +15,17 @@ trait Node
     /**
      * @param Collection the children in the tree
      */
-    private $children;
+    protected $children;
 
     /**
      * @param NodeInterface the parent in the tree
      */
-    private $parent;
+    protected $parent;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $path;
+    protected $path;
 
     /**
      * {@inheritdoc}
@@ -188,15 +189,43 @@ trait Node
      **/
     public function buildTree(\Traversable $results)
     {
-        $tree = array($this->getPath() => $this);
-        foreach($results as $node) {
-
-            $tree[$node->getPath()] = $node;
-
-            $parent = isset($tree[$node->getParentPath()]) ? $tree[$node->getParentPath()] : $this; // root is the fallback parent
-            $parent->addChild($node);
-            $node->setParent($parent);
+        if ($results instanceof IterableResult) {
+            return $this->fromIterable($results);
         }
+
+        return $this->fromArray($results);
+    }
+
+    public function fromArray(\Traversable $results)
+    {
+        $tree = array($this->getPath() => $this);
+
+        foreach ($results as $result) {
+            $this->addNode($tree, $result);
+        }
+
+        return $tree;
+    }
+
+    private function fromIterable(\Iterator $results)
+    {
+        $tree = array($this->getPath() => $this);
+
+        while (false !== $result = $results->next()) {
+            $this->addNode($tree, $result[0]);
+        }
+
+        return $tree;
+    }
+
+    private function addNode(array &$tree, NodeInterface $node)
+    {
+        $tree[$node->getPath()] = $node;
+
+        $parent = isset($tree[$node->getParentPath()]) ? $tree[$node->getParentPath()] : $this; // root is the fallback parent
+        var_dump($parent->getId());
+        $parent->addChild($node);
+        $node->setParent($parent);
     }
 
     /**

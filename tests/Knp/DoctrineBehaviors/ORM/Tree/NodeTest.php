@@ -283,9 +283,12 @@ class NodeTest extends \PHPUnit_Framework_TestCase
         $em->persist($entity[0][0]);
         $em->flush();
 
+        $em->clear();
+        //die(var_dump($repo->findAll()));
+
         $root = $repo->getTree('/');
 
-        $this->assertEquals($root[0][0], $entity[0][0]);
+        $this->assertEquals($root[0][0]->getId(), 3);
     }
 }
 

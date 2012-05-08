@@ -18,8 +18,7 @@ trait Node
     {
         $results = $this->getFlatTree($path, $rootAlias);
 
-        //die(var_dump(count($results)));
-        $root = $results->next();
+        $root = $results->next()[0];
         $root->buildTree($results);
 
         return $root;
